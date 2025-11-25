@@ -52,4 +52,3 @@ function main(){
 
 main "$@";
 exit $?;
-
