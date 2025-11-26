@@ -28,7 +28,7 @@
 NAME="4-push-repository.sh";
 true=1;
 false=0;
- 
+
 function main(){
 	[ $true       ] && { local message="";                                        } || :;
 	[ $true       ] && { set -e;                                                  } || :;
