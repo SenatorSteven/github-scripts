@@ -1,5 +1,5 @@
 
-# update-repository.sh
+# 3-push-repository.sh
 #
 # MIT License
 #
@@ -25,16 +25,20 @@
 
 #!/bin/bash
 
-NAME="update-repository.sh";
+NAME="3-push-repository.sh";
 true=1;
 false=0;
 
 function main(){
-	[ "$#" != "0" ] && { printf "$NAME: usage: $NAME\n" 1>&2; return 1; } || :;
-	[ $true       ] && { git status;                                    } || :;
-	[ $true       ] && { git add .;                                     } || :;
-	[ $true       ] && { git commit -m "Updated file";                  } || :;
-	[ $true       ] && { git push;                            return 0; } || :;
+	[ $true       ] && { set -e;                                            } || :;
+	[ "$#" != "0" ] && { printf "$NAME: usage: $NAME\n" 1>&2;     return 1; } || :;
+	[ $true       ] && { git status;                                        } || :;
+	[ $true       ] && { git add .;                                         } || :;
+	[ $true       ] && { git commit -m "Updated repository";                } || :;
+	[ $true       ] && { git pull --rebase;                                 } || :;
+	[ $true       ] && { git submodule update --init --recursive;           } || :;
+	[ $true       ] && { git push;                                          } || :;
+	[ $true       ] && { printf "done\n";                         return 0; } || :;
 }
 
 main "$@";
