@@ -37,7 +37,7 @@ function main(){
 	[ $true       ] && { git add .;                                                  } || :;
 	[ $true       ] && { git commit -m "$message";                                   } || :;
 	[ $true       ] && { git pull --rebase;                                          } || :;
-	[ $true       ] && { git submodule update --init --remote --recursive;           } || :; 
+	[ $true       ] && { git submodule update --init --remote --recursive;           } || :;
 	[ $true       ] && { git push;                                                   } || :;
 	[ $true       ] && { printf "done\n";                                  return 0; } || :;
 }
