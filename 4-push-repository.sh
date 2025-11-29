@@ -30,16 +30,16 @@ true=1;
 false=0;
 
 function main(){
-	[ $true       ] && { local message="";                                        } || :;
-	[ $true       ] && { set -e;                                                  } || :;
-	[ "$#" != "1" ] && { printf "$NAME: usage: $NAME [message]\n" 1>&2; return 1; } || :;
-	[ $true       ] && { message="$1";                                            } || :;
-	[ $true       ] && { git add .;                                               } || :;
-	[ $true       ] && { git commit -m "$message";                                } || :;
-	[ $true       ] && { git pull --rebase;                                       } || :;
-	[ $true       ] && { git submodule update --init --recursive;                 } || :;
-	[ $true       ] && { git push;                                                } || :;
-	[ $true       ] && { printf "done\n";                               return 0; } || :;
+	[ $true       ] && { local message="";                                           } || :;
+	[ $true       ] && { set -e;                                                     } || :;
+	[ "$#" != "1" ] && { printf "$NAME: usage: $NAME [message]\n" 1>&2;    return 1; } || :;
+	[ $true       ] && { message="$1";                                               } || :;
+	[ $true       ] && { git pull --rebase;                                          } || :;
+	[ $true       ] && { git submodule update --init --remote --recursive;           } || :;
+	[ $true       ] && { git add .;                                                  } || :;
+	[ $true       ] && { git commit -m "$message";                                   } || :;
+	[ $true       ] && { git push;                                                   } || :;
+	[ $true       ] && { printf "done\n";                                  return 0; } || :;
 }
 
 main "$@";
