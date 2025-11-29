@@ -35,9 +35,9 @@ function main(){
 	[ "$#" != "1" ] && { printf "$NAME: usage: $NAME [message]\n" 1>&2;    return 1; } || :;
 	[ $true       ] && { message="$1";                                               } || :;
 	[ $true       ] && { git add .;                                                  } || :;
+	[ $true       ] && { git commit -m "$message";                                   } || :;
 	[ $true       ] && { git pull --rebase;                                          } || :;
 	[ $true       ] && { git submodule update --init --remote --recursive;           } || :;
-	[ $true       ] && { git commit -m "$message";                                   } || :; 
 	[ $true       ] && { git push;                                                   } || :;
 	[ $true       ] && { printf "done\n";                                  return 0; } || :;
 }
