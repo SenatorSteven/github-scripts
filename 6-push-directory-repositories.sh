@@ -30,18 +30,18 @@ true=1;
 false=0;
 
 function main(){
-	[ $true             ] && { local directory="";                                                                                                      } || :;
-	[ $true             ] && { local message="";                                                                                                        } || :;
-	[ $true             ] && { set -e;                                                                                                                  } || :;
-	[ "$#" != "2"       ] && { printf "$NAME: usage: $NAME [directory] [message]\n" 1>&2;                                                     return 1; } || :;
-	[ $true             ] && { cd $(dirname $0);                                                                                                        } || :;
-	[ ! -f "$NAME"      ] && { cd $(cd $(dirname $BASH_SOURCE) && pwd);                                                                                 } || :;
-	[ ! -f "$NAME"      ] && { printf "$NAME: could not find $NAME directory\n" 1>&2;                                                         return 1; } || :;
-	[ $true             ] && { directory="$1"; directory="${directory%/}";                                                                              } || :;
-	[ $true             ] && { message="$2";                                                                                                            } || :;
-	[ ! -d "$directory" ] && { printf "$NAME: could not find the $directory directory\n" 1>&2;                                                return 1; } || :;
+	[ $true             ] && { local directory="";                                                                                                                          } || :;
+	[ $true             ] && { local message="";                                                                                                                            } || :;
+	[ $true             ] && { set -e;                                                                                                                                      } || :;
+	[ "$#" != "2"       ] && { printf "$NAME: usage: $NAME [directory] [message]\n" 1>&2;                                                                         return 1; } || :;
+	[ $true             ] && { cd $(dirname $0);                                                                                                                            } || :;
+	[ ! -f "$NAME"      ] && { cd $(cd $(dirname $BASH_SOURCE) && pwd);                                                                                                     } || :;
+	[ ! -f "$NAME"      ] && { printf "$NAME: could not find $NAME directory\n" 1>&2;                                                                             return 1; } || :;
+	[ $true             ] && { directory="$1"; directory="${directory%/}";                                                                                                  } || :;
+	[ $true             ] && { message="$2";                                                                                                                                } || :;
+	[ ! -d "$directory" ] && { printf "$NAME: could not find the $directory directory\n" 1>&2;                                                                    return 1; } || :;
 	[ $true             ] && { for i in "$directory"/*/; do printf "$i:\n"; ./4-push-repository.sh "$message" 2>&1 | awk '{print "\t"$0}'; printf "\n\n\n"; done;           } || :;
-	[ $true             ] && { printf "done\n";                                                                                               return 0; } || :;
+	[ $true             ] && { printf "done\n";                                                                                                                   return 0; } || :;
 }
 
 main "$@";
