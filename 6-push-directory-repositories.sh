@@ -41,7 +41,11 @@ function main(){
 	[ $true             ] && { directory="$1"; directory="${directory%/}";                                                                      } || :;
 	[ $true             ] && { message="$2";                                                                                                    } || :;
 	[ ! -d "$directory" ] && { printf "$NAME: could not find the $directory directory\n" 1>&2;                                        return 1; } || :;
-	[ $true             ] && { for i in "$directory"/*/; do printf "$i:\n"; ./4-push-repository.sh "$message"; printf "\n\n\n"; done;           } || :;
+	[ $true             ] && { for i in "$directory"/*/; do printf "$i:\n"; ./4-push-repository.sh "$message" > >(sed "s/^/$TAB/") 2> >(sed "s/^/$TAB/");
+
+
+
+printf "\n\n\n"; done;           } || :;
 	[ $true             ] && { printf "done\n";                                                                                       return 0; } || :;
 }
 
