@@ -30,19 +30,19 @@ true=1;
 false=0;
 
 function main(){
-	[ $true       ] && { local user="";                                                                               } || :;
-	[ $true       ] && { local repository="";                                                                         } || :;
-	[ $true       ] && { local folder="";                                                                             } || :;
-	[ $true       ] && { set -e;                                                                                      } || :;
-	[ "$#" != "2" ] && { printf "$NAME: usage: $NAME [user] [repository]\n" 1>&2;                           return 1; } || :;
-	[ $true       ] && { user="$1";                                                                                   } || :;
-	[ $true       ] && { repository="$2";                                                                             } || :;
-	[ $true       ] && { folder="/tmp/repo-tree-$(date)";                                                             } || :;
-	[ $true       ] && { git clone --recursive "https://github.com/$user/$repository" "$folder" &> /dev/null;         } || :;
-	[ $true       ] && { cd "$folder";                                                                                } || :;
-	[ $true       ] && { tree;                                                                                        } || :;
-	[ $true       ] && { rm -rf "$folder";                                                                            } || :;
-	[ $true       ] && { printf "done\n";                                                                   return 0; } || :;
+	[ $true       ] && { local user="";                                                                                 } || :;
+	[ $true       ] && { local repository="";                                                                           } || :;
+	[ $true       ] && { local folder="";                                                                               } || :;
+	[ $true       ] && { set -e;                                                                                        } || :;
+	[ "$#" != "2" ] && { printf "$NAME: usage: $NAME [user] [repository]\n" 1>&2;                             return 1; } || :;
+	[ $true       ] && { user="$1";                                                                                     } || :;
+	[ $true       ] && { repository="$2";                                                                               } || :;
+	[ $true       ] && { folder="/tmp/repo-tree-$(date)";                                                               } || :;
+	[ $true       ] && { git clone --recursive "https://github.com/$user/$repository" "$folder" &> /dev/null;           } || :;
+	[ $true       ] && { cd "$folder";                                                                                  } || :;
+	[ $true       ] && { tree;                                                                                          } || :;
+	[ $true       ] && { rm -rf "$folder";                                                                              } || :;
+	[ $true       ] && { printf "done\n";                                                                     return 0; } || :;
 }
 
 main "$@";
