@@ -24,5 +24,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. -->
 
 # github-scripts
-A small collection of scripts to make dealing with Github easier.
+A small collection of scripts to make dealing with GitHub easier.
 
