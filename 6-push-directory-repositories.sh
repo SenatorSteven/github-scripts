@@ -40,7 +40,7 @@ function main(){
 	[ $true             ] && { directory="$1"; directory="${directory%/}";                                                                              } || :;
 	[ $true             ] && { message="$2";                                                                                                            } || :;
 	[ ! -d "$directory" ] && { printf "$NAME: could not find the $directory directory\n" 1>&2;                                                return 1; } || :;
-	[ $true             ] && { for i in "$directory"/*/; do printf "$directory:\n"; ./4-push-repository.sh "$message"; printf "\n\n\n"; done;           } || :;
+	[ $true             ] && { for i in "$directory"/*/; do printf "$directory:\n"; ./4-push-repository.sh "$message" | awk '{print "\t"$0}'; printf "\n\n\n"; done;           } || :;
 	[ $true             ] && { printf "done\n";                                                                                               return 0; } || :;
 }
 
