@@ -36,8 +36,7 @@ function main(){
 	[ $true             ] && { local push="";                                                                                                                                        } || :;
 	[ $true             ] && { set -e;                                                                                                                                               } || :;
 	[ "$#" != "2"       ] && { printf "$NAME: usage: $NAME [directory] [message]\n" 1>&2;                                                                                  return 1; } || :;
-	[ $true             ] && { cd $(dirname $0);                                                                                                                                     } || :;
-	[ ! -f "$NAME"      ] && { cd $(cd $(dirname $BASH_SOURCE) && pwd);                                                                                                              } || :;
+	[ $true             ] && { cd "${BASH_SOURCE%/*}";                                                                                                                               } || :;
 	[ ! -f "$NAME"      ] && { printf "$NAME: could not find $NAME directory\n" 1>&2;                                                                                      return 1; } || :;
 	[ $true             ] && { directory="$1"; directory="${directory%/}";                                                                                                           } || :;
 	[ $true             ] && { message="$2";                                                                                                                                         } || :;
