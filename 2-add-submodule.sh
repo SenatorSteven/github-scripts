@@ -38,7 +38,7 @@ function main(){
 	[ $true       ] && { user="$1";                                                                         } || :;
 	[ $true       ] && { submodule="$2";                                                                    } || :;
 	[ $true       ] && { subdirectory="$3";                                                                 } || :;
-	[ $true       ] && { git submodule add --force "https://github.com/$user/$submodule" "$subdirectory";           } || :;
+	[ $true       ] && { git submodule add "https://github.com/$user/$submodule" "$subdirectory";           } || :;
 	[ $true       ] && { printf "done\n";                                                         return 0; } || :;
 }
 
